@@ -186,7 +186,7 @@ section p {
 }
 
 .teks p {
-    color: #19547b;
+    color: #000000;
 }
 
 /* Project Cards */
@@ -221,7 +221,7 @@ section p {
 }
 
 .project1 a {
-    color: #fff;
+    color: #101010;
     font-weight: bold;
     text-decoration: none;
     font-size: 1.2rem;
@@ -247,7 +247,7 @@ footer {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -258,14 +258,7 @@ footer {
 @keyframes bounceIn {
     0% {
         opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    70% {
-        transform: scale(0.9);
+        transform: scale(0.8);
     }
     100% {
         opacity: 1;
@@ -285,7 +278,7 @@ footer {
 @keyframes zoomIn {
     from {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.9);
     }
     to {
         opacity: 1;
@@ -296,7 +289,7 @@ footer {
 @keyframes slideInLeft {
     from {
         opacity: 0;
-        transform: translateX(-50px);
+        transform: translateX(-30px);
     }
     to {
         opacity: 1;
@@ -310,24 +303,19 @@ footer {
         padding: 1rem;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
     }
 
     nav .menu {
         flex-direction: column;
         gap: 1rem;
         width: 100%;
-        display: none; /* Hidden by default, toggle with JS if needed */
+        display: flex; /* Tampilkan menu pada mobile (tanpa JS) */
     }
 
-    nav .menu.active {
-        display: flex;
-    }
-
+    /* Non-aktifkan tombol hamburger jika tidak digunakan */
     .menu-toggle {
-        display: flex;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
+        display: none;
     }
 
     section {
