@@ -1,216 +1,405 @@
-/* Reset dasar untuk konsistensi */
+/* Reset dan Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth; /* Smooth scroll saat klik navbar ke section */
-}
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+    overflow-x: hidden;
 }
 
-/* Styling Navbar */
+/* Navbar Styles */
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
     padding: 1rem 2rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 nav .main a {
-    color: #fff;
     font-size: 1.5rem;
     font-weight: bold;
+    color: #ff6b6b;
     text-decoration: none;
+    animation: slideInLeft 1s ease-out;
 }
 
 nav .menu {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 nav .menu a {
-    color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover pada nav links */
 nav .menu a:hover {
-    background-color: #555;
-    color: #fff;
+    color: #ff6b6b;
+    transform: translateY(-2px);
 }
 
 nav .contact-btn {
-    background-color: #007bff;
-    color: #fff;
+    background: linear-gradient(45deg, #ff6b6b, #c44569);
+    color: white !important;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
 }
 
 nav .contact-btn:hover {
-    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
 }
 
-/* Styling Sections */
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Sections */
 section {
-    padding: 100px 2rem 2rem; /* Padding atas lebih besar untuk navbar fixed */
+    padding: 5rem 2rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* Animasi fadeIn untuk semua sections */
-    animation: fadeIn 1.5s ease-in-out;
+    animation: fadeInUp 1s ease-out;
 }
 
+section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+/* Home Section */
 #home {
-    background-color: #fff;
-    /* Ubah layout untuk home: flex row agar foto di kiri, teks di kanan */
-    flex-direction: row;
-    justify-content: space-between;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
     align-items: center;
-    text-align: left; /* Teks rata kiri */
-    padding: 100px 2rem;
+    justify-items: center;
 }
 
-#home .text-content {
-    flex: 1; /* Teks mengambil ruang lebih */
-    margin-right: 2rem;
+#home h1 {
+    font-size: 3rem;
+    animation: bounceIn 1.5s ease-out;
+    grid-column: 1 / -1;
 }
 
-#home .profile-img {
-    flex-shrink: 0; /* Foto tidak menyusut */
+#home p {
+    animation: fadeIn 2s ease-out 0.5s both;
+    grid-column: 1 / -1;
 }
 
-#about {
-    background-color: #cfcfcf;
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
 }
 
-#projects {
-    background-color: #fff;
-}
-
-#contact {
-    background-color: #cfcfcf;
-}
-
-/* Styling gambar profil */
 .profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    border: 8px solid #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: zoomIn 1s ease-out 1s both;
     object-fit: cover;
-    margin-top: 20px;
-    /* Animasi slideUp untuk gambar */
-    animation: slideUp 2s ease-out;
 }
 
-/* Styling untuk projects */
-#projects table {
-    display: inline-block;
+.profile-img:hover {
+    transform: scale(1.08) rotate(-2deg);
+    filter: brightness(1.1) drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+}
+
+/* About and Skill Sections */
+#about, #skill {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    color: #fff;
+}
+
+#about h1, #skill h1 {
+    color: #fff;
+}
+
+#about p, #skill p {
+    color: #f0f0f0;
+}
+
+/* Projects Section */
+#projects {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teks {
+    margin-bottom: 3rem;
+}
+
+.teks h1 {
+    color: #19547b;
+}
+
+.teks p {
+    color: #19547b;
+}
+
+/* Project Cards */
+.project1 {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    margin-top: 20px;
+    max-width: 300px;
+    animation: fadeInUp 1s ease-out;
 }
 
-.project-img {
-    width: 300px;
+.project1:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.project1 img {
+    width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    /* Animasi slideUp untuk gambar project */
-    animation: slideUp 2s ease-out;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
 }
 
-#projects a {
-    display: block;
-    margin-top: 10px;
-    color: #007bff;
+.project1 img:hover {
+    transform: scale(1.1);
+}
+
+.project1 a {
+    color: #fff;
+    font-weight: bold;
     text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
 }
 
-#projects a:hover {
-    text-decoration: underline;
+.project1 a:hover{
+    color: #ffd700; /* Gold color for hover */
 }
 
 /* Footer */
 footer {
+    background: #333;
+    color: #fff;
     text-align: center;
     padding: 1rem;
-    background-color: #333;
-    color: #fff;
     position: relative;
-    bottom: 0;
-    width: 100%;
 }
 
-/* Responsivitas untuk mobile */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 1rem;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
-    nav .menu {
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-    
-    section {
-        padding: 120px 1rem 2rem;
-    }
-    
-    #home {
-        flex-direction: column; /* Kembali ke column di mobile agar tidak overlap */
-        text-align: center;
-    }
-    
-    #home .text-content {
-        margin-right: 0;
-        margin-bottom: 1rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Animasi 1: fadeIn (untuk sections) */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-/* Animasi 2: slideUp (untuk gambar) */
-@keyframes slideUp {
+@keyframes zoomIn {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: scale(0.5);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        display: none; /* Hidden by default, toggle with JS if needed */
+    }
+
+    nav .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    section h1 {
+        font-size: 2rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    #home h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    #projects {
+        flex-direction: column;
+    }
+
+    .teks {
+        margin-bottom: 2rem;
+    }
+
+    .project1 {
+        max-width: 100%;
+        margin: 1rem 0;
+    }
+
+    .project1 img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .main a {
+        font-size: 1.2rem;
+    }
+
+    section h1 {
+        font-size: 1.8rem;
+    }
+
+    section p {
+        font-size: 0.9rem;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .teks {
+        margin-bottom: 1.5rem;
+    }
+
+    .project1 {
+        padding: 1rem;
+    }
+
+    .project1 img, .project2 img {
+        height: 120px;
     }
 }
