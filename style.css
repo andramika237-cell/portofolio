@@ -9,7 +9,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
     overflow-x: hidden;
 }
 
@@ -32,9 +32,9 @@ nav {
 nav .main a {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ff6b6b;
+    color: #35b7a1;
     text-decoration: none;
-    animation: slideInLeft 1s ease-out;
+    animation: navSlideIn 0.9s cubic-bezier(.2,.9,.3,1) both;
 }
 
 nav .menu {
@@ -51,12 +51,12 @@ nav .menu a {
 }
 
 nav .menu a:hover {
-    color: #ff6b6b;
+    color: #3592b7;
     transform: translateY(-2px);
 }
 
 nav .contact-btn {
-    background: linear-gradient(45deg, #ff6b6b, #c44569);
+    background: linear-gradient(45deg, #2bc8a9, #256d4f);
     color: white !important;
     padding: 0.5rem 1rem;
     border-radius: 25px;
@@ -66,7 +66,7 @@ nav .contact-btn {
 
 nav .contact-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    box-shadow: 0 6px 20px rgba(17, 79, 69, 0.6);
 }
 
 /* Hamburger Menu for Mobile */
@@ -93,7 +93,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: fadeInUp 1s ease-out;
+    animation: sectionFadeUp 1s ease-out;
 }
 
 section h1 {
@@ -112,7 +112,7 @@ section p {
 
 /* Home Section */
 #home {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+    background: linear-gradient(135deg, #415574 0%, #2100b3 100%);
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -123,12 +123,12 @@ section p {
 
 #home h1 {
     font-size: 3rem;
-    animation: bounceIn 1.5s ease-out;
+    animation: titleBounce 1.2s cubic-bezier(.2,.9,.3,1);
     grid-column: 1 / -1;
 }
 
 #home p {
-    animation: fadeIn 2s ease-out 0.5s both;
+    animation: homeTextFade 1.6s ease-out 0.3s both;
     grid-column: 1 / -1;
 }
 
@@ -142,11 +142,12 @@ section p {
 .profile-img {
     width: 250px;
     height: 250px;
+    max-width: 100%;
     border-radius: 20px;
     border: 8px solid #fff;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, filter 0.3s ease;
-    animation: zoomIn 1s ease-out 1s both;
+    animation: profileZoom 0.9s cubic-bezier(.25,.8,.25,1) 0.6s both;
     object-fit: cover;
 }
 
@@ -157,7 +158,7 @@ section p {
 
 /* About and Skill Sections */
 #about, #skill {
-    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    background: linear-gradient(135deg, #76e4c5 0%, #2bbf9f 100%);
     color: #fff;
 }
 
@@ -171,14 +172,21 @@ section p {
 
 /* Projects Section */
 #projects {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: linear-gradient(135deg, #8a63d2 0%, #5b3bd3 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    justify-items: center;
+    padding: 5rem 2rem;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .teks {
     margin-bottom: 3rem;
+    grid-column: 1 / -1;
+    text-align: center;
 }
 
 .teks h1 {
@@ -186,51 +194,56 @@ section p {
 }
 
 .teks p {
-    color: #000000;
+    color: #19547b;
 }
 
 /* Project Cards */
-.project1 {
+.project1, .project2, .project3, .project4 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 1rem;
     margin: 1rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     max-width: 300px;
-    animation: fadeInUp 1s ease-out;
+    animation: projectPop 0.9s ease-out;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.project1:hover {
+.project1:hover, .project2:hover, .project3:hover, .project4:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
-.project1 img {
-    width: 100%;
+.project1 img, .project2 img, .project3 img, .project4 img {
+    width: calc(100% + 2rem);
+    max-width: none;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    border-radius: 0;
+    margin: -1rem -1rem 1rem -1rem;
     transition: transform 0.3s ease;
 }
 
-.project1 img:hover {
+.project1 img:hover, .project2 img:hover, .project3 img:hover, .project4 img:hover {
     transform: scale(1.1);
 }
 
-.project1 a {
-    color: #101010;
+.project1 a, .project2 a, .project3 a, .project4 a {
+    color: #fff;
     font-weight: bold;
     text-decoration: none;
     font-size: 1.2rem;
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 0;
+    padding: 1rem 1.5rem 1.5rem;
     transition: color 0.3s ease;
 }
 
-.project1 a:hover{
+.project1 a:hover, .project2 a:hover, .project3 a:hover, .project4 a:hover {
     color: #ffd700; /* Gold color for hover */
 }
 
@@ -247,7 +260,7 @@ footer {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -258,7 +271,14 @@ footer {
 @keyframes bounceIn {
     0% {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
     }
     100% {
         opacity: 1;
@@ -278,7 +298,7 @@ footer {
 @keyframes zoomIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.5);
     }
     to {
         opacity: 1;
@@ -289,12 +309,45 @@ footer {
 @keyframes slideInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* --- New distinct keyframes --- */
+@keyframes navSlideIn {
+    from { opacity: 0; transform: translateY(-10px) translateX(-20px) rotate(-3deg); }
+    to { opacity: 1; transform: translateY(0) translateX(0) rotate(0); }
+}
+
+@keyframes sectionFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleBounce {
+    0% { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    60% { opacity: 1; transform: translateY(6px) scale(1.03); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes homeTextFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes profileZoom {
+    0% { opacity: 0; transform: scale(0.6) translateY(10px); }
+    70% { transform: scale(1.04); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes projectPop {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Responsive Design */
@@ -303,19 +356,25 @@ footer {
         padding: 1rem;
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
     }
 
     nav .menu {
         flex-direction: column;
         gap: 1rem;
         width: 100%;
-        display: flex; /* Tampilkan menu pada mobile (tanpa JS) */
+        display: flex; /* always visible on mobile */
     }
 
-    /* Non-aktifkan tombol hamburger jika tidak digunakan */
+    /* keep .menu.active for JS-driven toggles if added later */
+    nav .menu.active {
+        display: flex;
+    }
+
     .menu-toggle {
-        display: none;
+        display: flex;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
 
     section {
@@ -347,12 +406,12 @@ footer {
         margin-bottom: 2rem;
     }
 
-    .project1 {
+    .project1, .project2, .project3, .project4 {
         max-width: 100%;
         margin: 1rem 0;
     }
 
-    .project1 img {
+    .project1 img, .project2 img, .project3 img, .project4 img {
         height: 150px;
     }
 }
@@ -389,5 +448,71 @@ footer {
 
     .project1 img, .project2 img {
         height: 120px;
+    }
+}
+
+/* --- Home layout override: stack profile image above paragraph --- */
+#home {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    /* new distinct background: blue gradient */
+    background: linear-gradient(135deg, #0d6efd 0%, #22486f 100%);
+    color: #ffffff;
+}
+
+/* Ensure heading, image and paragraph span full width and are stacked */
+#home h1 {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+#home .profile-img {
+    grid-column: 1 / -1;
+    grid-row: 2; /* place after the heading */
+    justify-self: center;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(255,255,255,0.9);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    filter: saturate(150%);
+}
+
+#home p {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Mobile: stack vertically and center image */
+@media (max-width: 768px) {
+    #home {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 1rem;
+    }
+
+    #home h1,
+    #home p {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    #home .profile-img {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 160px;
+        height: 160px;
+        margin: 1rem 0;
     }
 }
